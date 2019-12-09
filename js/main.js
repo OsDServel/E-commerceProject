@@ -1,3 +1,44 @@
+//adding cart value
+var cart= 0;
+
+//creating cart function
+$('#container').on('click', '.item-add', function(){
+	let price= comicArray[i].price;
+
+	cart+= price;
+
+	$('#cart-container').text('$'+ cart);
+	
+})
+
+
+// creating item remove function
+// $('#container').on('click', '.item-remove', function(){
+// 	$(this).parent().remove();
+// });                                   //DOES NOT FUNCTION THE WAY I WISH IT TO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Comic function that starts up on window load
 function Comic(order, price, img, condition){
 	this.order= order;
 	this.price= price;
@@ -33,6 +74,12 @@ for(i= 0; i < comicArray.length; i++) {
 	var condition = document.createElement("h3");
 	var price = document.createElement("h3");
 	var display = document.createElement("img");
+	//adding the "add to cart" and "remove item" buttons, and giving them ID's
+	var addBtn= document.createElement('button');
+	addBtn.className= 'item-add';
+		//Note: do not capitalize var names, as they will be highlighted as a function, in blue, and is confusing, need to experiment to see if it will change the functionality of the element.
+	var removeBtn= document.createElement('button');
+	removeBtn.className= 'item-remove';
 
 
 //appending created elements to the newBox div element created
@@ -40,19 +87,29 @@ for(i= 0; i < comicArray.length; i++) {
 	newBox.appendChild(condition);
 	newBox.appendChild(price);
 	newBox.appendChild(display);
+//appending buttons to newBox div
+	newBox.appendChild(addBtn);
+	newBox.appendChild(removeBtn);
 
 	//creating text for array properties
 	var arrangent= document.createTextNode(comicArray[i].order)
 	var comicDisplay= document.createTextNode("Condition of the comic: " + comicArray[i].condition)
 	var priceDisplay= document.createTextNode("$" + comicArray[i].price)
+	//creating text node for buttons
+	var addItem= document.createTextNode("Add to Cart");
+	var removeItem= document.createTextNode("Remove");
+
 
 	//image src file link
 	display.src = comicArray[i].img
 
-	//add text to elements
+	//add textnode to elements
 	sequence.appendChild(arrangent)
 	condition.appendChild(comicDisplay)
 	price.appendChild(priceDisplay)
+	//add textnode to button elements
+	addBtn.appendChild(addItem);
+	removeBtn.appendChild(removeItem);
 
 	//append newBox to row
 	document.getElementById("comics").appendChild(newBox);
