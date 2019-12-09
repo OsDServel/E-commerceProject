@@ -3,7 +3,8 @@ var cart= 0;
 
 //creating cart function
 $('#container').on('click', '.item-add', function(){
-	let price= comicArray[i].price;
+	// let price= comicArray[i].price;
+	//wondering if i even need this piece of code here, as i am noticing that i have already given value to "price" in the "Comic()"
 
 	cart+= price;
 
